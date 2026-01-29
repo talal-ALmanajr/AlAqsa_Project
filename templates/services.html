@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأقصى نت | Engr. Talal</title>
+    <style>
+        body { background: radial-gradient(circle, #0a2e1a 0%, #050505 100%); color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid #28a745; padding: 30px; border-radius: 25px; width: 90%; max-width: 400px; text-align: center; }
+        h2 { color: #ffd700; }
+        select, input { width: 100%; padding: 12px; margin: 15px 0; border-radius: 10px; border: 1px solid #28a745; background: #000; color: #fff; box-sizing: border-box; }
+        .btn { background: #28a745; color: white; padding: 15px; width: 100%; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1em; }
+        footer { margin-top: 30px; text-align: center; color: #ffd700; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>💳 اطلب كرتك الآن</h2>
+        <select id="card">
+            <option value="100 ريال - 350 ميجا">100 ريال (350 ميجا)</option>
+            <option value="200 ريال - 800 ميجا">200 ريال (800 ميجا)</option>
+            <option value="250 ريال - 1 جيجا">250 ريال (1 جيجا)</option>
+        </select>
+        <input type="number" id="phone" placeholder="أدخل رقم جوالك">
+        <button onclick="sendOrder()" class="btn">إرسال الطلب (واتساب) ✅</button>
+    </div>
+
+    <footer>
+        <div>Dev. Engr. TALAL 🚀</div>
+        <div style="font-size: 0.8em; color: #888;">779325496</div>
+    </footer>
+
+    <script>
+    function sendOrder() {
+        let card = document.getElementById('card').value;
+        let phone = document.getElementById('phone').value;
+        let myNumber = "967779325496";
+        
+        if(phone.length < 9) { alert("لطفاً أدخل رقم صحيح"); return; }
+
+        let device = navigator.userAgent.includes("Android") ? "أندرويد" : "آيفون";
+        let msg = `🚩 *طلب جديد من الأقصى نت*\n\n💳 الباقة: ${card}\n📞 رقم الزبون: ${phone}\n📱 الجهاز: ${device}`;
+
+        // الرابط الذكي: يفتح التطبيق مباشرة في الجوال
+        let finalUrl = `https://api.whatsapp.com/send?phone=${myNumber}&text=${encodeURIComponent(msg)}`;
+        
+        window.location.href = finalUrl;
+    }
+    </script>
+</body>
+</html>

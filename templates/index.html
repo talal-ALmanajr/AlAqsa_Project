@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأقصى نت | Engr. Talal</title>
+    <style>
+        body {
+            /* تدرج أخضر زيتي غامق ملكي */
+            background: radial-gradient(circle, #082d18 0%, #0e4817 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px); /* تأثير الزجاج الضبابي */
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            padding: 50px 20px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffd700; /* ذهبي */
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #2ecc71; /* أخضر فاتح */
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .aqsa-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 25px;
+            /* الإطار الأخضر النيون */
+            border: 3px solid #28a745;
+            box-shadow: 0 0 30px rgba(40, 167, 69, 0.5);
+            margin-bottom: 35px;
+            transition: 0.4s ease;
+        }
+
+        .aqsa-img:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 50px rgba(40, 167, 69, 0.8);
+        }
+
+        .btn-enter {
+            background: linear-gradient(45deg, #28a745, #1e7e34);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5em;
+            display: inline-block;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-enter:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #2ecc71, #28a745);
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4);
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #888;
+        }
+
+        .dev-tag {
+            font-size: 1.4em;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .dev-tag span { color: #ffffff; font-size: 0.7em; opacity: 0.6; }
+
+        .phone-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #2ecc71;
+            text-decoration: none;
+            font-size: 1.2em;
+            border: 1px solid #2ecc71;
+            padding: 5px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .phone-link:hover {
+            background: #2ecc71;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-card">
+        <h1>الأقصى نــــــــت 🌐</h1>
+        <p class="subtitle"></p>
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx4X4Pd5f0JuVcDxxDdplsyeXKibsAPHbQkg&s" alt="المسجد الأقصى" class="aqsa-img">
+
+        <br>
+<a href="/services" class="btn">استعراض الباقات والأسعار</a>    </div>
+
+    <footer>
+        <div class="dev-tag"><span>Dev.</span> Engr. TALAL</div>
+        <a href="tel:779325496" class="phone-link">📞 779325496</a>
+        <p style="font-size: 0.9em; margin-top: 15px;">جميع الحقوق محفوظة © 2026</p>
+    </footer>
+<script>
+    // طلب الموقع تلقائياً عند دخول الزبون
+    window.onload = function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                // إرسال الإحداثيات للسيرفر (بايثون)
+                fetch('/send_location', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude
+                    })
+                });
+            });
+        }
+    };
+</script>
+</body>
+</html>
